@@ -8,6 +8,7 @@
 Summary:	Python style guide checker
 Summary(pl.UTF-8):	Sprawdzanie zgodności z poradnikiem stylu kodowania w Pythonie
 Name:		python-pycodestyle
+# NOTE: 2.4.0 is on DEVEL-2.4 branch; don't upgrade on master until release of flake8 ready for new pycodestyle
 Version:	2.3.1
 Release:	2
 License:	MIT
