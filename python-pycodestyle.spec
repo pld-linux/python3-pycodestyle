@@ -16,17 +16,20 @@ Group:		Libraries/Python
 #Source0Download: https://pypi.python.org/simple/pycodestyle/
 Source0:	https://files.pythonhosted.org/packages/source/p/pycodestyle/pycodestyle-%{version}.tar.gz
 # Source0-md5:	240e342756af30cae0983b16303a2055
+Patch0:		%{name}-py3.7.patch
 URL:		https://pycodestyle.readthedocs.io/
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.714
 %if %{with python2}
+BuildRequires:	python-modules >= 1:2.6
 BuildRequires:	python-setuptools
 %endif
 %if %{with python3}
+BuildRequires:	python3-modules >= 1:3.2
 BuildRequires:	python3-setuptools
 %endif
 %{?with_doc:BuildRequires:	sphinx-pdg}
-Requires:	python-modules
+Requires:	python-modules >= 1:2.6
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -43,7 +46,7 @@ wcześniej nazywał się pep8.
 Summary:	Python style guide checker
 Summary(pl.UTF-8):	Sprawdzanie zgodności z poradnikiem stylu kodowania w Pythonie
 Group:		Libraries/Python
-Requires:	python3-modules
+Requires:	python3-modules >= 1:3.2
 
 %description -n python3-pycodestyle
 pycodestyle is a tool to check your Python code against some of the
@@ -67,6 +70,7 @@ Dokumentacja API modułu pycodestyle.
 
 %prep
 %setup -q -n pycodestyle-%{version}
+%patch0 -p1
 
 %build
 %if %{with python2}
@@ -109,9 +113,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/pycodestyle
 %attr(755,root,root) %{_bindir}/pycodestyle-2
 %{py_sitescriptdir}/pycodestyle.py[co]
-%if "%{py_ver}" > "2.4"
 %{py_sitescriptdir}/pycodestyle-%{version}-py*.egg-info
-%endif
 %endif
 
 %if %{with python3}

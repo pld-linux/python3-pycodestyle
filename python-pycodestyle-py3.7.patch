@@ -1,0 +1,52 @@
+--- pycodestyle-2.3.1/pycodestyle.py.orig	2017-01-31 00:57:04.000000000 +0100
++++ pycodestyle-2.3.1/pycodestyle.py	2018-07-22 10:20:35.053176323 +0200
+@@ -91,7 +91,7 @@
+ 
+ PyCF_ONLY_AST = 1024
+ SINGLETONS = frozenset(['False', 'None', 'True'])
+-KEYWORDS = frozenset(keyword.kwlist + ['print']) - SINGLETONS
++KEYWORDS = frozenset(keyword.kwlist + ['print', 'async']) - SINGLETONS
+ UNARY_OPERATORS = frozenset(['>>', '**', '*', '+', '-'])
+ ARITHMETIC_OP = frozenset(['**', '*', '/', '//', '+', '-'])
+ WS_OPTIONAL_OPERATORS = ARITHMETIC_OP.union(['^', '&', '|', '<<', '>>', '%'])
+@@ -110,7 +110,7 @@
+ RERAISE_COMMA_REGEX = re.compile(r'raise\s+\w+\s*,.*,\s*\w+\s*$')
+ ERRORCODE_REGEX = re.compile(r'\b[A-Z]\d{3}\b')
+ DOCSTRING_REGEX = re.compile(r'u?r?["\']')
+-EXTRANEOUS_WHITESPACE_REGEX = re.compile(r'[[({] | []}),;:]')
++EXTRANEOUS_WHITESPACE_REGEX = re.compile(r'[\[({] | [\]}),;:]')
+ WHITESPACE_AFTER_COMMA_REGEX = re.compile(r'[,;:]\s*(?:  |\t)')
+ COMPARE_SINGLETON_REGEX = re.compile(r'(\bNone|\bFalse|\bTrue)?\s*([=!]=)'
+                                      r'\s*(?(1)|(None|False|True))\b')
+--- pycodestyle-2.3.1/testsuite/E25.py.orig	2018-07-22 10:30:36.083169457 +0200
++++ pycodestyle-2.3.1/testsuite/E25.py	2018-07-22 10:30:41.713169396 +0200
+@@ -39,6 +39,6 @@
+ async def add(a: int = 0, b: int = 0) -> int:
+     return a + b
+ # Previously E251 four times
+-#: E272:1:6
++#: E271:1:6
+ async  def add(a: int = 0, b: int = 0) -> int:
+     return a + b
+--- pycodestyle-2.3.1/testsuite/E30.py.orig	2017-01-25 00:13:11.000000000 +0100
++++ pycodestyle-2.3.1/testsuite/E30.py	2018-07-22 10:31:24.909835554 +0200
+@@ -157,7 +157,7 @@
+ if __name__ == '__main__':
+     main()
+ # Previously just E272:1:6 E272:4:6
+-#: E302:4:1 E272:1:6 E272:4:6
++#: E302:4:1 E271:1:6 E271:4:6
+ async  def x():
+     pass
+ 
+--- pycodestyle-2.3.1/testsuite/E70.py.orig	2017-01-25 00:13:11.000000000 +0100
++++ pycodestyle-2.3.1/testsuite/E70.py	2018-07-22 10:31:53.633168572 +0200
+@@ -14,7 +14,7 @@
+ def f(x): return 2
+ #: E704:1:1
+ async def f(x): return 2
+-#: E704:1:1 E272:1:6
++#: E704:1:1 E271:1:6
+ async  def f(x): return 2
+ #: E704:1:1 E226:1:19
+ def f(x): return 2*x
