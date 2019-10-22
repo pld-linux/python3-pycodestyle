@@ -9,26 +9,26 @@ Summary:	Python style guide checker
 Summary(pl.UTF-8):	Sprawdzanie zgodności z poradnikiem stylu kodowania w Pythonie
 Name:		python-pycodestyle
 # NOTE: before upgrading to >=2.6.0 check for flake8 release supporting new pycodestyle
-Version:	2.4.0
+Version:	2.5.0
 Release:	1
 License:	MIT
 Group:		Libraries/Python
 #Source0Download: https://pypi.org/simple/pycodestyle/
 Source0:	https://files.pythonhosted.org/packages/source/p/pycodestyle/pycodestyle-%{version}.tar.gz
-# Source0-md5:	85bbebd2c90d2f833c1db467d4d0e9a3
+# Source0-md5:	40e7a76f364a18f531aaba11a4476e21
 URL:		https://pycodestyle.readthedocs.io/
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.714
 %if %{with python2}
-BuildRequires:	python-modules >= 1:2.6
+BuildRequires:	python-modules >= 1:2.7
 BuildRequires:	python-setuptools
 %endif
 %if %{with python3}
-BuildRequires:	python3-modules >= 1:3.3
+BuildRequires:	python3-modules >= 1:3.4
 BuildRequires:	python3-setuptools
 %endif
 %{?with_doc:BuildRequires:	sphinx-pdg}
-Requires:	python-modules >= 1:2.6
+Requires:	python-modules >= 1:2.7
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -45,7 +45,7 @@ wcześniej nazywał się pep8.
 Summary:	Python style guide checker
 Summary(pl.UTF-8):	Sprawdzanie zgodności z poradnikiem stylu kodowania w Pythonie
 Group:		Libraries/Python
-Requires:	python3-modules >= 1:3.3
+Requires:	python3-modules >= 1:3.4
 
 %description -n python3-pycodestyle
 pycodestyle is a tool to check your Python code against some of the
