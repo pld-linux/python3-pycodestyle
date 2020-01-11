@@ -10,7 +10,7 @@ Summary(pl.UTF-8):	Sprawdzanie zgodności z poradnikiem stylu kodowania w Python
 Name:		python-pycodestyle
 # NOTE: before upgrading to >=2.6.0 check for flake8 release supporting new pycodestyle
 Version:	2.5.0
-Release:	3
+Release:	4
 License:	MIT
 Group:		Libraries/Python
 #Source0Download: https://pypi.org/simple/pycodestyle/
@@ -46,6 +46,8 @@ Summary:	Python style guide checker
 Summary(pl.UTF-8):	Sprawdzanie zgodności z poradnikiem stylu kodowania w Pythonie
 Group:		Libraries/Python
 Requires:	python3-modules >= 1:3.4
+# default binary moved
+Conflicts:	python-pycodestyle < 2.5.0-4
 
 %description -n python3-pycodestyle
 pycodestyle is a tool to check your Python code against some of the
@@ -72,11 +74,19 @@ Dokumentacja API modułu pycodestyle.
 
 %build
 %if %{with python2}
-%py_build %{?with_tests:test}
+%py_build
+
+%if %{with tests}
+%{__python} -m testsuite.test_all
+%endif
 %endif
 
 %if %{with python3}
-%py3_build %{?with_tests:test}
+%py3_build
+
+%if %{with tests}
+%{__python} -m testsuite.test_all
+%endif
 %endif
 
 %if %{with doc}
@@ -85,20 +95,20 @@ Dokumentacja API modułu pycodestyle.
 
 %install
 rm -rf $RPM_BUILD_ROOT
+
 %if %{with python2}
 %py_install
 
 %{__mv} $RPM_BUILD_ROOT%{_bindir}/pycodestyle{,-2}
+
 %py_postclean
 %endif
 
 %if %{with python3}
 %py3_install
-%{__mv} $RPM_BUILD_ROOT%{_bindir}/pycodestyle{,-3}
-%endif
 
-%if %{with python2}
-ln -s pycodestyle-2 $RPM_BUILD_ROOT%{_bindir}/pycodestyle
+%{__mv} $RPM_BUILD_ROOT%{_bindir}/pycodestyle{,-3}
+ln -sf pycodestyle-3 $RPM_BUILD_ROOT%{_bindir}/pycodestyle
 %endif
 
 %clean
@@ -108,7 +118,6 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc CHANGES.txt LICENSE README.rst
-%attr(755,root,root) %{_bindir}/pycodestyle
 %attr(755,root,root) %{_bindir}/pycodestyle-2
 %{py_sitescriptdir}/pycodestyle.py[co]
 %{py_sitescriptdir}/pycodestyle-%{version}-py*.egg-info
@@ -118,6 +127,7 @@ rm -rf $RPM_BUILD_ROOT
 %files -n python3-pycodestyle
 %defattr(644,root,root,755)
 %doc CHANGES.txt LICENSE README.rst
+%attr(755,root,root) %{_bindir}/pycodestyle
 %attr(755,root,root) %{_bindir}/pycodestyle-3
 %{py3_sitescriptdir}/pycodestyle.py
 %{py3_sitescriptdir}/__pycache__/pycodestyle.cpython-*.py[co]
