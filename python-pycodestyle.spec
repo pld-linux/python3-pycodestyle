@@ -8,14 +8,14 @@
 Summary:	Python style guide checker
 Summary(pl.UTF-8):	Sprawdzanie zgodności z poradnikiem stylu kodowania w Pythonie
 Name:		python-pycodestyle
-# NOTE: before upgrading to >=2.6.0 check for flake8 release supporting new pycodestyle
-Version:	2.5.0
-Release:	5
+# NOTE: before upgrading to >=2.8.0 check for python2-compatible flake8 release supporting new pycodestyle
+Version:	2.7.0
+Release:	1
 License:	MIT
 Group:		Libraries/Python
 #Source0Download: https://pypi.org/simple/pycodestyle/
 Source0:	https://files.pythonhosted.org/packages/source/p/pycodestyle/pycodestyle-%{version}.tar.gz
-# Source0-md5:	40e7a76f364a18f531aaba11a4476e21
+# Source0-md5:	b6d333b5ef185b73b54ec0e9292d7d9e
 URL:		https://pycodestyle.readthedocs.io/
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.714
