@@ -10,7 +10,7 @@ Summary(pl.UTF-8):	Sprawdzanie zgodności z poradnikiem stylu kodowania w Python
 Name:		python-pycodestyle
 # NOTE: before upgrading to >=2.8.0 check for python2-compatible flake8 release supporting new pycodestyle
 Version:	2.7.0
-Release:	2
+Release:	3
 License:	MIT
 Group:		Libraries/Python
 #Source0Download: https://pypi.org/simple/pycodestyle/
