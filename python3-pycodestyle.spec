@@ -5,13 +5,13 @@
 Summary:	Python style guide checker
 Summary(pl.UTF-8):	Sprawdzanie zgodności z poradnikiem stylu kodowania w Pythonie
 Name:		python3-pycodestyle
-Version:	2.12.1
+Version:	2.13.0
 Release:	1
 License:	MIT
 Group:		Libraries/Python
 #Source0Download: https://pypi.org/simple/pycodestyle/
 Source0:	https://files.pythonhosted.org/packages/source/p/pycodestyle/pycodestyle-%{version}.tar.gz
-# Source0-md5:	a116089dc7267cfd082c779680b8cab2
+# Source0-md5:	4e0e9d54c06f24a457a552e8e038f9d2
 URL:		https://pycodestyle.readthedocs.io/
 BuildRequires:	python3-modules >= 1:3.4
 BuildRequires:	python3-setuptools
